@@ -7,4 +7,6 @@ public interface AuthService {
     User createUser(SignupRequest signupRequest);
 
    Boolean hasUserWithEmail(String email);
+
+    void createAdminAccount();
 }

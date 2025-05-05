@@ -1,5 +1,6 @@
 package org.example.service.jwt.auth;
 
+import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
 import org.example.dto.SignupRequest;
 import org.example.dto.User;
@@ -12,9 +13,10 @@ import org.springframework.stereotype.Service;
 @Service
 @RequiredArgsConstructor
 public class AuthServiceImpl implements AuthService{
-    private UserDao userDao;
 
-    private BCryptPasswordEncoder bCryptPasswordEncoder;
+    private final UserDao userDao;
+
+    private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
     public User createUser(SignupRequest signupRequest) {
         UserEntity user = new UserEntity();
@@ -39,5 +41,18 @@ public class AuthServiceImpl implements AuthService{
     @Override
     public Boolean hasUserWithEmail(String email) {
         return userDao.findFirstByEmail(email).isPresent();
+    }
+
+    @PostConstruct
+    public void createAdminAccount(){
+        UserEntity adminAccount = userDao.findByRole(UserRole.ADMIN);
+        if(null == adminAccount){
+            UserEntity user = new UserEntity();
+            user.setEmail("admin@gmail.com");
+            user.setName("admin");
+            user.setRole(UserRole.ADMIN);
+            user.setPassword(new BCryptPasswordEncoder().encode("admin"));
+            userDao.save(user);
+        }
     }
 }
