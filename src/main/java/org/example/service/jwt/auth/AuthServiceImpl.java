@@ -35,4 +35,9 @@ public class AuthServiceImpl implements AuthService{
 
         return userDto;
     }
+
+    @Override
+    public Boolean hasUserWithEmail(String email) {
+        return userDao.findFirstByEmail(email).isPresent();
+    }
 }
