@@ -1,4 +1,4 @@
-package org.example.service.jwt.auth;
+package org.example.service.auth;
 
 import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;

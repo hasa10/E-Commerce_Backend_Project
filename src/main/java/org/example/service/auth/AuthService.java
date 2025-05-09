@@ -1,4 +1,4 @@
-package org.example.service.jwt.auth;
+package org.example.service.auth;
 
 import org.example.dto.SignupRequest;
 import org.example.dto.User;
