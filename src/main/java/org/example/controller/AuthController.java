@@ -79,12 +79,7 @@ public class AuthController {
 
         }
 
-
-
-
-
-
-
+    }
 
     @PostMapping("/sign-up")
     public ResponseEntity<?> signupUser(@RequestBody SignupRequest signupRequest) {
