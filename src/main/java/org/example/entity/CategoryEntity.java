@@ -1,11 +1,13 @@
 package org.example.entity;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
 @Entity
 @Table(name = "category")
 @Data
+@AllArgsConstructor
 public class CategoryEntity {
 
     @Id
