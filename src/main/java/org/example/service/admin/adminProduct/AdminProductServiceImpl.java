@@ -9,6 +9,8 @@ import org.example.repository.ProductDao;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -29,6 +31,11 @@ public class AdminProductServiceImpl implements AdminProductService {
 
         productEntity.setCategoryEntity(categoryEntity);
         return productDao.save(productEntity).getDto();
+    }
+
+    public List<Product> getAllProducts() {
+        List<ProductEntity> all = productDao.findAll();
+        return all.stream().map(ProductEntity::getDto).collect(Collectors.toList());
     }
 
 }
