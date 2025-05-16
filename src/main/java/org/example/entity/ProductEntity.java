@@ -3,6 +3,7 @@ package org.example.entity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
+import org.example.dto.Product;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
@@ -31,4 +32,16 @@ public class ProductEntity {
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JsonIgnore
     private CategoryEntity categoryEntity;
+
+    public Product getDto() {
+        Product product = new Product();
+        product.setId(id);
+        product.setName(name);
+        product.setPrice(price);
+        product.setDescription(description);
+        product.setByteImg(img);
+        product.setCategoryId(categoryEntity.getId());
+        product.setCategoryName(categoryEntity.getName());
+        return product;
+    }
 }
