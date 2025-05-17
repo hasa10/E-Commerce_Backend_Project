@@ -3,8 +3,8 @@ package org.example.entity;
 import jakarta.persistence.*;
 import lombok.Data;
 import org.example.enums.OrderStatus;
-
 import java.util.Date;
+import java.util.List;
 import java.util.UUID;
 
 @Entity
