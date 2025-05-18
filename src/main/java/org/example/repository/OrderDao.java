@@ -7,5 +7,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface OrderDao extends JpaRepository<OrderEntity, Long> {
-    OrderEntity findByUserEntityIdAndOrderStatus(Long userId, OrderStatus orderStatus);
+    OrderEntity findByUserIdAndStatus(Long userId, OrderStatus orderStatus);
+
 }

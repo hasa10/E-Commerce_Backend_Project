@@ -20,15 +20,17 @@ public class CartItemsEntity {
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "product_id", nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
-    private ProductEntity productEntity;
+    private ProductEntity product;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "user_id", nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
-    private UserEntity userEntity;
+    private UserEntity user;
 
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "order_id")
-    private OrderEntity orderEntity;
+    private OrderEntity order;
 
+    public void setProduct(ProductEntity productEntity) {
+    }
 }
