@@ -24,4 +24,10 @@ public class CustomerProductController {
         return ResponseEntity.ok(products);
     }
 
+    @GetMapping("/search/{name}")
+    public ResponseEntity<List<Product>> getAllProductByName(@PathVariable String name) {
+        List<Product> products = customerProductService.searchProductByName(name);
+        return ResponseEntity.ok(products);
+    }
+
 }
