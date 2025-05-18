@@ -31,6 +31,5 @@ public class CartItemsEntity {
     @JoinColumn(name = "order_id")
     private OrderEntity order;
 
-    public void setProduct(ProductEntity productEntity) {
-    }
+
 }

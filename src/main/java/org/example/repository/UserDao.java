@@ -9,7 +9,7 @@ import java.util.Optional;
 
 @Repository
 public interface UserDao extends JpaRepository<UserEntity, Long> {
-    Optional<UserEntity> findFirstByEmail(String username); // <-- Updated method
+    Optional<UserEntity> findFirstByEmail(String username);
     UserEntity findByRole(UserRole userRole);
 
 }

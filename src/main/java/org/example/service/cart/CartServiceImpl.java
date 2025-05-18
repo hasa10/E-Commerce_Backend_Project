@@ -31,7 +31,7 @@ public class CartServiceImpl implements CartService{
     private final ProductDao productDao;
 
     public ResponseEntity<?> addProductToCart(AddProductInCart addProductInCart) {
-        OrderEntity activeOrder = orderDao.findByUserIdAndStatus(addProductInCart.getUserId(), OrderStatus.Pending);
+        OrderEntity activeOrder = orderDao.findByUserIdAndOrderStatus(addProductInCart.getUserId(), OrderStatus.Pending);
         Optional<CartItemsEntity> optionalCartItems = cartItemDao.findByProductIdAndOrderIdAndUserId(
                 addProductInCart.getProductId(), activeOrder.getId(), addProductInCart.getUserId());
 
